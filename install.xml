@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+	<name>XML importer</name>
+	<code>XML importer</code>
+	<version>3.x-4.6</version>
+	<author>happyonline.gr</author>
+	<link>https://www.happyonline.gr</link>
+
+	<file path="admin/controller/common/column_left.php">
+		<operation>
+			<search><![CDATA[$marketplace = array();]]></search>
+			<add position="after"><![CDATA[
+
+            $xml_importer = array();
+			
+			$xml_importer[] = array(
+				'name'	   => 'Settings',
+				'href'     => $this->url->link('extension/extension/xml_importer', 'user_token=' . $this->session->data['user_token'], true),
+				'children' => array()		
+			);
+			
+            if ($xml_importer) {
+				$marketplace[] = array(
+					'name'	   => 'Xml importer',
+					'href'     => '',
+					'children' => $xml_importer
+				);
+			}
+
+			]]></add>
+		</operation>
+	</file>
+
+</modification>
